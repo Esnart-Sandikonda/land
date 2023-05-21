@@ -1,0 +1,19 @@
+.bg{
+    background-image: url("./images/intro.jpg");
+    background-size: cover; 
+    background-repeat: no-repeat;
+    color: #ffffff;
+    background-position: center;
+    min-height: 70vh;
+    padding-top: 4rem;
+    text-align: center
+   
+}
+.
+
+.h1{
+    font-size: 50px;
+}
+.hhome{
+    background-position: center; 
+}
