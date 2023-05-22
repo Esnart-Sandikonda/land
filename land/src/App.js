@@ -10,6 +10,13 @@ import AdminSignup from "./components/AdminSignup";
 import Createuser from "./components/Createuser";
 import Updateuser from "./components/Updateuser";
 import Userlanding from "./components/Userlanding";
+import Userlandpage from "./components/Userlandpage";
+import Hhhome from './components/Hhhome'
+import Profile from "./components/Profile";
+import ChengeOwnership from "./components/ChengeOwnership"
+import Clearance from "./components/Clearance"
+import Estates from "./components/Estates";
+import Geoinformation from "./components/Geoinformation";
 
  function App() {
    return (
@@ -31,6 +38,14 @@ import Userlanding from "./components/Userlanding";
           <Route path="/Createuser" element={<Createuser />} />
           <Route path="/Updateuser/:user_id" element={<Updateuser />} />
           <Route path="/Userlanding" element={<Userlanding />} />
+          
+          <Route path="/Userlandpage" element={<Userlandpage />} />
+          <Route path="/Hhhome" element={<Hhhome />} />
+          <Route path="/Profile" element={<Profile />} />
+          <Route path="/ChengeOwnership" element={<ChengeOwnership />} />
+          <Route path="/Clearance" element={<Clearance />} />
+          <Route path="/Estates" element={<Estates />} />
+          <Route path="/Geoinformation" element={<Geoinformation />} />
         </Routes>
         
         
