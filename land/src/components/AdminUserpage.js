@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
-import Sidebar from "./Sidebar";
 
 const AdminUserpage = () => {
     const [data, setData] = useState([]);
@@ -22,8 +21,8 @@ const handleDelete = (user_id) =>{
     <div>
     <div className="d-flex justify-content-center align-items-center bg-dark">
       <div className="bg-white rounded w-100 p-3">
-        <h2 className="d-flex justify-content-center">Users</h2>
-        <Link to="/createuser" className="btn btn-success">Add +</Link>
+        <h2 className="d-flex justify-content-center">Property Registry</h2>
+        <Link to="/createuser" className="btn btn-success">Register +</Link>
         <table className="table">
           <thead>
             <tr>
