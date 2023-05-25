@@ -9,7 +9,6 @@ import AdminUserpage from "./components/AdminUserpage";
 import AdminSignup from "./components/AdminSignup";
 import Createuser from "./components/Createuser";
 import Updateuser from "./components/Updateuser";
-import Userlanding from "./components/Userlanding";
 import Userlandpage from "./components/Userlandpage";
 import Hhhome from './components/Hhhome'
 import Profile from "./components/Profile";
@@ -37,7 +36,6 @@ import Geoinformation from "./components/Geoinformation";
           <Route path="/AdminUserpage" element={<AdminUserpage />} />
           <Route path="/Createuser" element={<Createuser />} />
           <Route path="/Updateuser/:user_id" element={<Updateuser />} />
-          <Route path="/Userlanding" element={<Userlanding />} />
           
           <Route path="/Userlandpage" element={<Userlandpage />} />
           <Route path="/Hhhome" element={<Hhhome />} />

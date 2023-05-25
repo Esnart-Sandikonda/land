@@ -32,7 +32,7 @@ const OwnerPortal = () => {
       .post("http://localhost:8081/userlogin", values)
       .then((res) => {
         if (res.status === 200) {
-          navigate("/Userlanding");
+          navigate("/Userlandpage");
         } else {
           alert("No record existed");
         }
