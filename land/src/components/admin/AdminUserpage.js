@@ -22,7 +22,7 @@ const handleDelete = (user_id) =>{
     <div className="d-flex justify-content-center align-items-center bg-dark">
       <div className="bg-white rounded w-100 p-3">
         <h2 className="d-flex justify-content-center">Property Registry</h2>
-        <Link to="/createuser" className="btn btn-success">Register +</Link>
+        <Link to="/AdminNavigation/createuser" className="btn btn-success">Register +</Link>
         <table className="table">
           <thead>
             <tr>

@@ -22,7 +22,7 @@ const Createuser = () => {
 }
         
           return (
-            <div className="d-flex vh-50 bg-primary justify-content-center align-items-center">
+            <div className="d-flex vh-50 justify-content-center align-items-center">
               <div className="w-50 bg-white rounded p-3">
                 <form onSubmit={handleSubmit}>
                   <h2>Add User</h2>

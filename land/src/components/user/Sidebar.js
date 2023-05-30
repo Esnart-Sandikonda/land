@@ -17,7 +17,7 @@ const Sidebar = () =>{
                 </a>
                 <Link to="/AdminUserpage" className="list-group-item py-2">
                 <i className="bi bi-people fs-5 me-3"></i>
-                    <span className="`fs-5">Users</span>
+                    <span className="`fs-5">Property Registry</span>
                 </Link>
                 <a className="list-group-item py-2">
                 <i className="bi bi-clipboard-data fs-5 me-3"></i>

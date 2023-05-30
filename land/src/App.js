@@ -1,21 +1,22 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from './components/Home'
-import OwnerPortal from "./components/OwnerPortal";
-import StaffPortal from "./components/StaffPortal"
-import Services from "./components/Services"
-import About from "./components/About"
-import AdminNavigation from "./components/AdminNavigation";
-import AdminUserpage from "./components/AdminUserpage";
-import AdminSignup from "./components/AdminSignup";
-import Createuser from "./components/Createuser";
-import Updateuser from "./components/Updateuser";
-import Userlandpage from "./components/Userlandpage";
-import Hhhome from './components/Hhhome'
-import Profile from "./components/Profile";
-import ChengeOwnership from "./components/ChengeOwnership"
-import Clearance from "./components/Clearance"
-import Estates from "./components/Estates";
-import Geoinformation from "./components/Geoinformation";
+import Home from './components/landing/Home'
+import OwnerPortal from "./components/landing/OwnerPortal";
+import StaffPortal from "./components/landing/StaffPortal"
+import Services from "./components/landing/Services"
+import About from "./components/landing/About"
+import AdminNavigation from "./components/admin/AdminNavigation";
+import AdminUserpage from "./components/admin/AdminUserpage";
+import AdminSignup from "./components/landing/AdminSignup";
+import Createuser from "./components/admin/Createuser";
+import Updateuser from "./components/admin/Updateuser";
+import Userlandpage from "./components/user/Userlandpage";
+import Hhhome from './components/user/Hhhome'
+import Profile from "./components/user/Profile";
+import ChengeOwnership from "./components/user/ChengeOwnership"
+import Clearance from "./components/user/Clearance"
+import Estates from "./components/user/Estates";
+import Geoinformation from "./components/user/Geoinformation";
+import AdminDashboard from "./components/admin/AdminDashboard"
 
  function App() {
    return (
@@ -23,7 +24,6 @@ import Geoinformation from "./components/Geoinformation";
         
       <Router>
         
-
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/OwnerPortal" element={<OwnerPortal />} />
@@ -31,10 +31,15 @@ import Geoinformation from "./components/Geoinformation";
           
           <Route path="/Services" element={<Services />} />
           <Route path="/About" element={<About />} />
-          <Route path="/AdminNavigation" element={<AdminNavigation />} />
+
+          <Route path='/AdminNavigation' element={<AdminNavigation />} >
+              <Route path="/AdminNavigation" element={<AdminDashboard />} />
+              <Route path='AdminUserpage' element={<AdminUserpage /> } /> 
+              <Route path="Createuser" element={<Createuser />} />
+          </Route>
+
           <Route path="/AdminSignup" element={<AdminSignup />} />
-          <Route path="/AdminUserpage" element={<AdminUserpage />} />
-          <Route path="/Createuser" element={<Createuser />} />
+          
           <Route path="/Updateuser/:user_id" element={<Updateuser />} />
           
           <Route path="/Userlandpage" element={<Userlandpage />} />
