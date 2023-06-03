@@ -122,7 +122,31 @@ app.post('/userlogin', (req, res) => {
     });
   });
   
-    
+//posting user lease application form to database
+app.post('/leaseapplication', (req, res) =>{
+    const sql = "INSERT INTO leaseapplication (`username`, `email`, `password`, `area`, `district`) VALUES (?, ?, ?, ?, ?)";
+    const values = [
+                req.body.username,
+                req.body.email,
+                req.body.password,
+                req.body.area,
+                req.body.district,
+
+    ]
+    db.query(sql, values, (err, data) =>{
+        if(err) return res.json(err);
+        return res.json(data);
+    })
+})  
+
+//getting lease forms to admin
+app.get('/gettingleaseform', (req, res) =>{
+    const sql = "SELECT * FROM leaseapplication";
+    db.query(sql, (err, data) =>{
+        if(err) return res.json(err);
+        return res.json(data);
+    })
+})
   
 // start server
 app.listen(8081, () => {

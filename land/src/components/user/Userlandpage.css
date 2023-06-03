@@ -1,0 +1,36 @@
+.sidebar-minimized {
+    width: 60px;
+  }
+  
+  .sidebar-minimized .nav-link .d-none {
+    display: none;
+  }
+  
+  .sidebar-minimized .nav-link i {
+    margin-right: 0;
+  }
+  
+  .sidebar-minimized .nav-link .ms-1 {
+    display: none;
+  }
+  
+  .sidebar-minimized .nav-link .bi {
+    font-size: 1.5rem;
+  }
+  
+  .toggle-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    margin-right: 10px;
+  }
+  
+  .toggle-btn:focus {
+    outline: none;
+  }
+  
+  .sidebar-collapsed .nav-link .ms-1 {
+    display: none;
+  }
+  

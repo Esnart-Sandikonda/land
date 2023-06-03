@@ -31,8 +31,8 @@ const StaffPortal = () =>{
     }
   }
   return(
-    <div className="d-flex justify-content-center align-items-center bg-primary vh-100">
-        <div className="bg-white p-3 rounded w-25">
+    <div className='d-flex justify-content-center align-items-center vh-100 loginPage'>
+    <div className='p-3 rounded w-25 border loginForm'>
           <h2>Sign-In</h2>
           <form action="" onSubmit={handleSubmit}>
             <div className="mb-3">
@@ -48,8 +48,8 @@ const StaffPortal = () =>{
                {errors.password && <span className="text-danger">{errors.password}</span>}
             </div>
             <button type='submit' className="btn btn-success w-100"><strong>Login</strong></button>
-            <p></p>
-            <Link to="/AdminSignup" className="btn btn-default border w-100 bg-light text-decoration-none"> Create Account</Link>
+            <p>You are agreeing to our terms and policies</p>
+           
           </form>
         </div>
     </div>
