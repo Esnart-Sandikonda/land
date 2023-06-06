@@ -3,61 +3,62 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 
 const AdminUserpage = () => {
-    const [data, setData] = useState([]);
+  const [data, setData] = useState([]);
+
   useEffect(() => {
     axios.get('http://localhost:8081/users')
-    .then( res => setData(res.data))
-    .catch(err => console.log(err));
+      .then(res => setData(res.data))
+      .catch(err => console.log(err));
   }, []);
 
-  const navigate = useNavigate()
-const handleDelete = (user_id) =>{
-    axios.delete('http://localhost:8081/deleteuser/' + user_id)
-    .then( res => navigate('/AdminUserpage'))
-    .catch(err => console.log(err));
-}
+  const navigate = useNavigate();
+
+  const handleDelete = (user_id) => {
+    axios.delete(`http://localhost:8081/deleteuser/${user_id}`)
+      .then(res => navigate('/AdminUserpage'))
+      .catch(err => console.log(err));
+  };
 
   return (
     <div>
-    <div className="d-flex justify-content-center align-items-center bg-dark">
-      <div className="bg-white rounded w-100 p-3">
-        <h2 className="d-flex justify-content-center">Property Registry</h2>
-        <Link to="/AdminNavigation/createuser" className="btn btn-success">Register +</Link>
-        <table className="table">
-          <thead>
-            <tr>
-              <th>Username</th>
-              <th>Email</th>
-              <th>Password</th>
-              <th>Area</th>
-              <th>District</th>
-              <th>LandType</th>
-              <th>Latitude</th>
-              <th>Longitude</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((d, i) => (
+      <div className="d-flex justify-content-center align-items-center bg-dark">
+        <div className="bg-white rounded w-100 p-3">
+          <h2 className="d-flex justify-content-center">Property Registry</h2>
+          <Link to="/AdminNavigation/createuser" className="btn btn-success">Register +</Link>
+          <table className="table">
+            <thead>
               <tr>
-                <td>{d.username}</td>
-                <td>{d.email}</td>
-                <td>{d.password}</td>
-                <td>{d.area}</td>
-                <td>{d.district}</td>
-                <td>{d.land_type}</td>
-                <td>{d.latitude}</td>
-                <td>{d.longitude}</td>
-                <td>
-                  <Link to={`/Updateuser/${d.user_id}`} className="btn btn-sm btn-primary">Update</Link>
-                  <button onClick={e => handleDelete(d.user_id)} className="btn btn-sm btn-danger" >Delete</button>
-                </td>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Nationality</th>
+                <th>Area</th>
+                <th>District</th>
+                <th>Gid</th>
+                <th>Action</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {data.map((d, i) => (
+                <tr key={i}>
+                  <td>{d.username}</td>
+                  <td>{d.email}</td>
+                  <td>{d.password}</td>
+                  <td>{d.nationality}</td>
+                  <td>{d.area}</td>
+                  <td>{d.district}</td>
+                  <td>{d.gid}</td>
+                  <td>
+                    <Link to={`/Updateuser/${d.user_id}`} className="btn btn-sm btn-primary">Update</Link>
+                    <button onClick={() => handleDelete(d.user_id)} className="btn btn-sm btn-danger" >Delete</button>
+                    <Link to={`/Updateuser/${d.user_id}`} className="btn btn-sm btn-primary">View</Link>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
     </div>
   );
 }
