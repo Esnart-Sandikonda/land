@@ -1,35 +1,54 @@
 import React from "react";
-import "./Services"
+import "./Services.css";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 const Services = () => {
-  return (
+    return (
 
         <div>
             <Navbar/>
-                <div className="container">
-
-                    <div className="card-container">
-                <div className="card-title">
-                <h3>Our Services</h3>
-                </div>
-                <div className="card-body">
-               
-                    The land management system has been designed to assist in the 
-                    management and administration of 
-                    land-related activities. It provides tools and functionalities to streamline and
-                    automate various tasks and processes involved in land management by the ministry of lands. <br/>
-                    thhhhj
-                </div>
-                
-                
-            </div>
-        </div>
-        <Footer/>
-        </div>
-        
-      
-  );
-};
-
-export default Services;
+      <div className="container">
+              <div className="card-container">
+                  <div className="card-title">
+                  <h3>Cadastral Surveying</h3>
+                  </div>
+                  <div className="card-body">
+                  Cadastral surveying is the field of surveying that specializes in the establishment 
+                  and re-establishment of property boundaries. Cadastral surveys create, mark and re-establish 
+                  the boundaries of land parcels. A cadastre is a 
+                  comprehensive recording of the property boundaries of all land parcels with real
+                  property rights in a country
+                  </div>
+                  
+                  
+              </div>
+  
+              <div className="card-container">
+              <div className="card-title">
+              <h3>Land Assesssment</h3>
+              </div>
+              <div className="card-body">
+              It involves the evaluation and analysis of land-related 
+              information and data to support decision-making processes, land management, and 
+              land administration activities. 
+              </div>
+              </div>
+  
+              <div className="card-container">
+              <div className="card-title">
+              <h3>Land Valuation</h3>
+              </div>
+              <div className="card-body">
+              involves determining the monetary value of land and properties. It serves 
+              as a crucial component of land management, taxation, land transactions,
+              and decision-making processes. 
+              </div>
+              </div>
+  
+              </div>
+              
+              <Footer/>
+   </div> 
+   );
+  };
+  export default Services;
