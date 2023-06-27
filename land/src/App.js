@@ -14,6 +14,11 @@ import Clearance from "./components/user/Clearance"
 import AdminDashboard from "./components/admin/AdminDashboard"
 import ApplyForLease from "./components/user/ApplyForLease";
 import Profile from "./components/user/Profile";
+import AdminViewUserLand from "./components/admin/AdminViewUserLand";
+import AdminProfileview from "./components/admin/AdminProfileview";
+import Viewland from "./components/admin/Viewland";
+import UserHome from "./components/user/UserHome";
+import LeaseApplications from "./components/admin/LeaseApplications";
 
 
  function App() {
@@ -33,12 +38,19 @@ import Profile from "./components/user/Profile";
               <Route path="/AdminNavigation" element={<AdminDashboard />} />
               <Route path='AdminUserpage' element={<AdminUserpage /> } /> 
               <Route path="Createuser" element={<Createuser />} />
+              <Route path="Updateuser/:user_id" element={<Updateuser />} />
+              <Route path="AdminProfileview/:id" element={<AdminProfileview />} />
+              <Route path="Viewland" element={<Viewland />} />
+              <Route path="AdminViewUserLand/:user_id" element={<AdminViewUserLand />} />
+              <Route path="AdminProfileView" element={<AdminProfileview/>} />
+              <Route path="LeaseApplications" element={<LeaseApplications/>} />
+
           </Route>
 
           <Route path="/AdminSignup" element={<AdminSignup />} />
-          <Route path="/Updateuser/:user_id" element={<Updateuser />} />
-
+          
           <Route path="Userlandpage" element={<Userlandpage />} >
+          <Route path="/Userlandpage" element={<UserHome/>}/>
           <Route path="Clearance" element={<Clearance />} />
           <Route path="ApplyForLease" element={<ApplyForLease />} />
           <Route path="Profile" element={<Profile />} />

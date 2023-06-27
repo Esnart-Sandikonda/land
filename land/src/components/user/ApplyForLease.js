@@ -5,19 +5,18 @@ import { useNavigate } from "react-router-dom";
 const ApplyForLease = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [occupation, setOccupation] = useState('');
   const [area, setArea] = useState('');
   const [district, setDistrict] = useState('');
-  const [landType, setLandType] = useState('');
-  const [latitude, setLatitude] = useState('');
-  const [longitude, setLongitude] = useState('');
+  const [landtype, setLandtype] = useState('');
+ 
 
   const navigate = useNavigate();
   const handleSubmit = async (event) => {
     event.preventDefault();
-    axios.post('http://localhost:8081/leaseapplication', { username, email, password, area, district, landType, latitude, longitude})
+    axios.post('http://localhost:8081/leaseapplication', { username, email, occupation, area, district, landtype})
     .then(res =>{
-            navigate('/');
+            navigate('/AdminNavigation');
     }) .catch(err => console.log(err));
 }
         
@@ -47,13 +46,13 @@ const ApplyForLease = () => {
                     />
                   </div>
                   <div className="mb-2">
-                    <label htmlFor="">Password</label>
+                    <label htmlFor="">Occupation</label>
                     <input
-                      type="password"
-                      placeholder="Enter user password"
+                      type="text"
+                      placeholder="Enter user Area"
                       className="form-control"
-                      value={password}
-                      onChange={e => setPassword(e.target.value)}
+                      value={occupation}
+                      onChange={e => setOccupation(e.target.value)}
                     />
                   </div>
                   <div className="mb-2">
@@ -74,6 +73,16 @@ const ApplyForLease = () => {
                       className="form-control"
                       value={district}
                       onChange={e => setDistrict(e.target.value)}
+                    />
+                  </div>
+                  <div className="mb-2">
+                    <label htmlFor="">landType</label>
+                    <input
+                      type="text"
+                      placeholder="Enter land type"
+                      className="form-control"
+                      value={landtype}
+                      onChange={e => setLandtype(e.target.value)}
                     />
                   </div>
                  

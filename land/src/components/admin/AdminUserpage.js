@@ -15,7 +15,7 @@ const AdminUserpage = () => {
 
   const handleDelete = (user_id) => {
     axios.delete(`http://localhost:8081/deleteuser/${user_id}`)
-      .then(res => navigate('/AdminUserpage'))
+      .then(res => navigate('/AdminNavigation/AdminUserpage'))
       .catch(err => console.log(err));
   };
 
@@ -24,7 +24,7 @@ const AdminUserpage = () => {
       <div className="d-flex justify-content-center align-items-center bg-dark">
         <div className="bg-white rounded w-100 p-3">
           <h2 className="d-flex justify-content-center">Property Registry</h2>
-          <Link to="/AdminNavigation/createuser" className="btn btn-success">Register +</Link>
+          <Link to="/AdminNavigation/createuser" className="btn btn-success bg-primary">Register +</Link>
           <table className="table">
             <thead>
               <tr>
@@ -49,9 +49,9 @@ const AdminUserpage = () => {
                   <td>{d.district}</td>
                   <td>{d.gid}</td>
                   <td>
-                    <Link to={`/Updateuser/${d.user_id}`} className="btn btn-sm btn-primary">Update</Link>
+                    <Link to={`/AdminNavigation/Updateuser/${d.user_id}`} className="btn btn-sm btn-primary">Update</Link>
                     <button onClick={() => handleDelete(d.user_id)} className="btn btn-sm btn-danger" >Delete</button>
-                    <Link to={`/Updateuser/${d.user_id}`} className="btn btn-sm btn-primary">View</Link>
+                    <Link to={`/AdminNavigation/AdminViewUserLand/${d.user_id}`} className="btn btn-sm btn-primary">View</Link>
                   </td>
                 </tr>
               ))}

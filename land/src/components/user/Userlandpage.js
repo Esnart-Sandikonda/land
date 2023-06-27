@@ -1,13 +1,23 @@
 import React from "react";
 import { Link, Outlet, useNavigate } from 'react-router-dom'
+import { BiExit } from 'react-icons/bi';
+
 
 const Userlandpage =() =>{
+
+	const navigate = useNavigate(); 
+	const handleLogout = () => {
+		// Perform any necessary logout actions
+		// For example, clearing session storage, removing tokens, etc.
+		navigate('/OwnerPortal'); // Navigate to the logout route
+	  };
+
     return (
 		<div className="container-fluid">
 			<div className="row flex-nowrap">
 				<div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-primary">
 					<div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-						<a href="/Userlandpage" className="d-flex align-items-center pb-3 mb-md-1 mt-md-3 me-md-auto text-white text-decoration-none">
+						<a className="d-flex align-items-center pb-3 mb-md-1 mt-md-3 me-md-auto text-white text-decoration-none">
 							<span className="fs-5 fw-bolder d-none d-sm-inline">User</span>
 						</a>
 						<ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
@@ -17,25 +27,32 @@ const Userlandpage =() =>{
                                     <span className="ms-1 d-none d-sm-inline">Home</span> </Link>
 							</li>
 							<li>
-								<Link to="/Userlandpag/AdminUserpage" className="nav-link px-0 align-middle text-white">
+								<Link to="/Userlandpage/Profile" className="nav-link px-0 align-middle text-white">
 									<i className="fs-4 bi-person"></i> 
                                     <span className="ms-1 d-none d-sm-inline">Profile</span> </Link>
 							</li>
 							<li>
 								<Link to="/Userlandpage/ApplyForLease" className="nav-link px-0 align-middle text-white">
-									<i className="fs-4 bi-person"></i> 
+									<i className="fs-4 bi-file-earmark-text-fill"></i> 
                                     <span className="ms-1 d-none d-sm-inline">Apply for Lease</span></Link>
 							</li>
               <li>
-								<Link to="/Userlandpag/UsreProfile" className="nav-link px-0 align-middle text-white">
-									<i className="fs-4 bi-person"></i> 
+								<Link to="/Userlandpage/Clearance" className="nav-link px-0 align-middle text-white">
+									<i className="fs-4 bi-exclamation-triangle-fill"></i> 
                                     <span className="ms-1 d-none d-sm-inline">Clearance</span></Link>
 							</li>
-							<li >
-								<a href="#" className="nav-link px-0 align-middle text-white">
-									<i className="fs-4 bi-power"></i> 
-                                    <span className="ms-1 d-none d-sm-inline">Logout</span></a>
+							<li>
+								<Link to="/Userlandpage/ViewUserLand" className="nav-link px-0 align-middle text-white">
+									<i className="fs-4  bi-geo-fill"></i> 
+                                    <span className="ms-1 d-none d-sm-inline">view land</span></Link>
 							</li>
+							
+							<li>
+                <a href="#" className="nav-link px-0 align-middle text-white" onClick={handleLogout}>
+                  <i className="fs-4 bi-exit"><BiExit /></i>
+                  <span className="ms-1 d-none d-sm-inline">Logout</span>
+                </a>
+              </li>
 						</ul>
 					</div>
 				</div>
