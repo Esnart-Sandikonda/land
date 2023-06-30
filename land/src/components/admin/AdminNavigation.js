@@ -19,7 +19,7 @@ const AdminNavigation = () => {
         <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-primary">
           <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
             <NavLink to="/AdminNavigation" className="d-flex align-items-center pb-3 mb-md-1 mt-md-3 me-md-auto text-white text-decoration-none">
-              <span className="fs-5 fw-bolder d-none d-sm-inline">Admin Dashboard</span>
+              <span className="fs-5 fw-bolder d-none d-sm-inline">Land Officer Dashboard</span>
             </NavLink>
             <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
               <li>
@@ -48,7 +48,7 @@ const AdminNavigation = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/AdminNavigation/AdminProfileView" className="nav-link px-0 align-middle text-white" activeClassName="active" activeStyle={{ fontWeight: "bold" }}>
+                <NavLink to="/AdminNavigation/AdminProfileview" className="nav-link px-0 align-middle text-white" activeClassName="active" activeStyle={{ fontWeight: "bold" }}>
                   <i className="fs-4 bi-person"></i>
                   <span className="ms-1 d-none d-sm-inline">Profile</span>
                 </NavLink>

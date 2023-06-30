@@ -33,29 +33,51 @@ app.post("/login", (req, res) => {
     });
 });
 
+//user login
+app.post("/userlogin", (req, res) => {
+  const sql = "SELECT * FROM property_registry WHERE email = $1 AND password = $2";
+  const values = [req.body.email, req.body.password];
 
-// Admin creating user data
-app.post('/property', (req, res) => {
-    const sql = "INSERT INTO property_registry (username, email, password, nationality, area, district, gid) VALUES ($1, $2, $3, $4, $5, $6, $7)";
-    const values = [
-        req.body.username,
-        req.body.email,
-        req.body.password,
-        req.body.nationality,
-        req.body.area,
-        req.body.district,
-        req.body.gid
-    ];
-
-    pool.query(sql, values, (err, data) => {
-        if (err) {
-            console.error(err);
-            return res.status(500).json("Error inserting data");
-        }
-
-        res.json({ message: "Data inserted successfully" });
-    });
+  pool.query(sql, values, (err, data) => {
+      if (err) {
+          console.error(err);
+          return res.status(500).json("Error");
+      }
+      if (data.rows.length > 0) {
+          return res.json("success");
+      } else {
+          return res.json("fail");
+      }
+  });
 });
+
+//admin creating user
+app.post('/property', (req, res) => {
+  const sql = "INSERT INTO property_registry (username, email, password, nationality, area, district, latitude, longitude) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)";
+  const { username, email, password, nationality, area, district, latitude, longitude } = req.body;
+
+  const values = [
+    username,
+    email,
+    password,
+    nationality,
+    area,
+    district,
+    parseFloat(latitude),
+    parseFloat(longitude)
+  ];
+
+  pool.query(sql, values, (err, data) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json("Error inserting data");
+    }
+
+    res.json({ message: "Data inserted successfully" });
+  });
+});
+
+
 
 // Get all registered users
 app.get('/users', (req, res) => {
@@ -128,10 +150,9 @@ app.get('/userview/:user_id', (req, res) => {
   const userId = req.params.user_id;
 
   const sql = `
-    SELECT pr.username, ST_AsGeoJSON(s.geom)::json AS geom
-    FROM property_registry pr
-    INNER JOIN shape s ON pr.gid = s.gid
-    WHERE pr.user_id = $1
+    SELECT latitude, longitude
+    FROM property_registry
+    WHERE user_id = $1
   `;
 
   pool.query(sql, [userId], (err, data) => {
@@ -148,8 +169,8 @@ app.get('/userview/:user_id', (req, res) => {
       });
     }
     const user = {
-      username: data.rows[0].username,
-      geom: data.rows[0].geom
+      latitude: data.rows[0].latitude,
+      longitude: data.rows[0].longitude
     };
     return res.json(user);
   });
@@ -252,6 +273,37 @@ app.get('/leaseApplicationsCount', (req, res) => {
     return res.json(result.rows);
   });
 });
+
+// Endpoint to send a notification to the user
+app.post('/sendNotification/:user_id', (req, res) => {
+  const user_id = req.params.user_id;
+  const message = req.body.message;
+
+  
+  res.sendStatus(200);
+});
+
+// get admin profile
+app.get('/get/:id', (req, res) => {
+  const id = req.params.id;
+  const sql = "SELECT * FROM adminlogin WHERE id = $1";
+  pool.query(sql, [id], (err, result) => {
+    if (err) return res.json({ Error: "Get employee error in SQL" });
+    return res.json({ Status: "Success", Result: result.rows });
+  });
+});
+
+// get user profile
+app.get('/getuserprofile/:user_id', (req, res) => {
+  const id = req.params.id;
+  const sql = "SELECT * FROM property_registry WHERE id = $1";
+  pool.query(sql, [id], (err, result) => {
+    if (err) return res.json({ Error: "Get employee error in SQL" });
+    return res.json({ Status: "Success", Result: result.rows });
+  });
+});
+
+
 
 // Start server
 app.listen(8081, () => {

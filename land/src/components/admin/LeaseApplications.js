@@ -9,7 +9,7 @@ const LeaseApplications = () => {
 
   useEffect(() => {
     fetchData();
-    fetchUserCount(); // Fetch user count when the component mounts
+    
   }, []);
 
   const fetchData = async () => {
@@ -21,18 +21,24 @@ const LeaseApplications = () => {
     }
   };
 
-  const fetchUserCount = async () => {
+  //send notification to user after the lease application has been accepted
+  const handleAccept = async (user_id) => {
     try {
-      const response = await axios.get('http://localhost:8081/userCount'); // Replace with the appropriate API endpoint to fetch the user count
-      setUserCount(response.data.count);
+      await axios.put(`http://localhost:8081/acceptLeaseApplication/${user_id}`);
+      // Send notification to the user
+      await axios.post(`http://localhost:8081/sendNotification/${user_id}`, {
+        message: "Your lease application has been accepted!"
+      });
+      fetchData();
     } catch (error) {
       console.log(error);
     }
   };
 
-  const handleDelete = async (userId) => {
+
+  const handleDelete = async (user_id) => {
     try {
-      await axios.delete(`http://localhost:8081/deleteUser/${userId}`);
+      await axios.delete(`http://localhost:8081/deleteUser/${user_id}`);
       fetchData();
     } catch (error) {
       console.log(error);
@@ -66,7 +72,7 @@ const LeaseApplications = () => {
                   <td>{d.district}</td>
                   <td>{d.landtype}</td>
                   <td>
-                    <Link to={`/Updateuser/${d.user_id}`} className="btn btn-sm btn-primary">Accept</Link>
+                  <button className="btn btn-sm btn-primary" onClick={() => handleAccept(d.user_id)}> Accept </button>
                     <button className="btn btn-sm btn-danger" onClick={() => handleDelete(d.user_id)}>Deny</button>
                   </td>
                 </tr>

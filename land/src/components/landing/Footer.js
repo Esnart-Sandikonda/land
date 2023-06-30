@@ -1,61 +1,131 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Footer.css';
+import Modal from 'react-modal';
 
 const Footer = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [email, setEmail] = useState('');
+  const [subject, setSubject] = useState('');
+  const [content, setContent] = useState('');
+
+  const handleEmailClick = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handleSubjectChange = (e) => {
+    setSubject(e.target.value);
+  };
+
+  const handleContentChange = (e) => {
+    setContent(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Submitted email:', email);
+    console.log('Submitted subject:', subject);
+    console.log('Submitted content:', content);
+    closeModal();
+  };
+
   return (
     <footer className="footer">
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-4 col-md-6">
-            <h4>About Us</h4>
-            <p>
-              The Ministry of Land is responsible <br/>
-			  for managing and regulating land <br/>
-			  resources in our country. We aim <br/>
-			  to ensure efficient land administration, <br/>
-			  sustainable land use, and equitable <br/>
-			   land distribution.
-            </p>
-          </div>
-          <div className="col-lg-4 col-md-6">
-            <h4>Contact Information</h4>
-            <p>
-              Ministry of Land<br />
-              123 Main Street, City<br />
-              Country<br />
-              Email: info@landministry.gov<br />
-              Phone: +123456789
-            </p>
-          </div>
-          <div className="col-lg-4 col-md-12">
-            <h4>Quick Links</h4>
-            <ul>
-              <li><a href="/">Home</a></li>
-              <li><a href="/About">About</a></li>
-              <li><a href="/Services">Services</a></li>
-              <li><a href="/Contact">Contact</a></li>
-            </ul>
-          </div>
-		  <div className="col-md-6">
-              <p>&copy; {new Date().getFullYear()} Ministry of Land. All rights reserved.</p>
-            </div>
+      <div className="footer-content">
+        <div className="footer-section">
+          <h4>About Us</h4>
+          <p>
+            The land assistant aims at easing the tiresome task.<br />
+            of manually following up your land property details.
+          </p>
+        </div>
+        <div className="footer-section">
+          <h4>Contact Information</h4>
+          <p>
+            Address: 270, Zomba City, Malawi<br />
+            Email: 
+            <a href="#!" onClick={handleEmailClick}>
+              info@land.com
+            </a>
+            <br />
+            Phone: +265 998332225
+          </p>
+        </div>
+        <div className="footer-section">
+          <h4>Social Media Links</h4>
+          <ul className="footer-social">
+            <li>
+              <a href="https://www.facebook.com/your-institution-facebook-page-url" target="_blank" rel="noopener noreferrer">
+                <i className="fab fa-facebook-f"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://twitter.com/your-institution-twitter-page-url" target="_blank" rel="noopener noreferrer">
+                <i className="fab fa-twitter"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/company/your-institution-linkedin-page-url" target="_blank" rel="noopener noreferrer">
+                <i className="fab fa-linkedin-in"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/your-institution-instagram-page-url" target="_blank" rel="noopener noreferrer">
+                <i className="fab fa-instagram"></i>
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
-      <div className="footer-bottom">
-        <div className="container">
-          <div className="row">
-            
-            <div className="col-md-6">
-              <ul className="footer-social">
-                <li><a href="#"><i className="fa fa-facebook"></i></a></li>
-                <li><a href="#"><i className="fa fa-twitter"></i></a></li>
-                <li><a href="#"><i className="fa fa-linkedin"></i></a></li>
-                <li><a href="#"><i className="fa fa-instagram"></i></a></li>
-              </ul>
-            </div>
-          </div>
+      
+      {/* Modal */}
+      <Modal isOpen={isModalOpen} onRequestClose={closeModal} className="email-modal">
+        <div className="modal-header">
+          <button className="close-button" onClick={closeModal}>X</button>
         </div>
-      </div>
+        <div className="modal-content">
+          <h2>Compose Email</h2>
+          <form onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label htmlFor="email">Email Address:</label>
+              <input
+                type="text"
+                id="email"
+                value={email}
+                onChange={handleEmailChange}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="subject">Subject:</label>
+              <input
+                type="text"
+                id="subject"
+                value={subject}
+                onChange={handleSubjectChange}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="content">Content:</label>
+              <textarea
+                id="content"
+                value={content}
+                onChange={handleContentChange}
+                required
+              ></textarea>
+            </div>
+            <button type="submit" className="submit-button">Submit</button>
+          </form>
+        </div>
+      </Modal>
     </footer>
   );
 };

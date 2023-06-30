@@ -1,43 +1,35 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import axios from 'axios';
 
-const Clearance = () => {
-  const [userBalance, setUserBalance] = useState(null);
+function Clearance() {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const [employee, setEmployee] = useState([]);
 
   useEffect(() => {
-    // Fetch user balance from the server or perform necessary calculations
-    // Example: Fetching user balance from an API endpoint
-    fetchUserBalance()
-      .then((balance) => {
-        setUserBalance(balance);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
-
-  const fetchUserBalance = () => {
-    // Simulating an API call to fetch the user balance
-    return new Promise((resolve, reject) => {
-      // Replace this with your actual API call or calculation logic
-      setTimeout(() => {
-        const balance = 5000; // Replace with the actual user balance
-        resolve(balance);
-      }, 1000);
-    });
-  };
+    axios
+      .get(`http://localhost:8081/get/${id}`)
+      .then((res) => setEmployee(res.data.Result[0]))
+      .catch((err) => console.log(err));
+  }, []); // Empty dependency array to run the effect only once
 
   return (
     <div>
-      {userBalance !== null ? (
-        <div>
-          <h2>User Balance: {userBalance}</h2>
-          {/* You can display other clearance-related information here */}
+      <h3 className="card bg-warning mt-4">My Profile</h3>
+      <div className="card d-flex justify-content-center flex-column align-items-center mt-3">
+        <p>
+          Welcome to My Profile section of the Land Officer. This section displays all your details. If you feel that
+          some of the information displayed here is not correct and For any technical challenges please contact the ICT
+          Centre through the support system.
+        </p>
+        <div className="d-flex align-items-center flex-column mt-5">
+          <h3>Email: {employee.email}</h3>
+          <h3>Password: {employee.password}</h3>
         </div>
-      ) : (
-        <p>Loading user balance...</p>
-      )}
+      </div>
     </div>
   );
-};
+}
 
 export default Clearance;

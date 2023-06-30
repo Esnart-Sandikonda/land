@@ -1,22 +1,57 @@
-.container{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start; /* Add this line to align containers to the top */
 }
-.card-container{
-    width: 340px;
-    overflow: hidden;
-    box-shadow: 0px 0px 15px -5px;
-    padding:40px;
-    margin:1rem;
-}
-.card-container:hover{
-    
-    box-shadow: 0px 0px 15px 0px;
-}
-.h3{
-   
-    padding:2;
-    margin-bottom:2 rem;
 
+.card-container {
+  width: 330px;
+  overflow: hidden;
+  box-shadow: 0px 0px 15px -5px;
+  padding: 40px;
+  margin: 1rem;
+  background-color: #f2f2f2;
+}
+
+.card-container:hover {
+  box-shadow: 0px 0px 15px 0px;
+}
+
+.card-container .card-title {
+  text-align: center; /* Center align the heading */
+}
+
+.card-container .card-title h2 {
+  padding: 2px;
+  margin-bottom: 2rem;
+  color: #324b65;
+}
+
+.card-container .card-body {
+  text-align: justify; /* Align the body text */
+}
+
+.card-container .card-body p {
+  margin-bottom: 20px;
+}
+
+.card-container img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.card-container .read-more-button {
+  display: block;
+  width: 100%;
+  margin-top: 3%;
+  padding: 10px;
+  border: none;
+  background-color: #5265c4;
+  color: #ffffff;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
 }

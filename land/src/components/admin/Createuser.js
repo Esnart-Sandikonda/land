@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -9,20 +9,40 @@ const Createuser = () => {
   const [nationality, setNationality] = useState('');
   const [area, setArea] = useState('');
   const [district, setDistrict] = useState('');
-  const [gid, setGid] = useState('');
+  const [latitude, setLatitude] = useState('');
+  const [longitude, setLongitude] = useState('');
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Get user's location coordinates
+    const getLocation = () => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      } else {
+        console.log("Geolocation is not supported by this browser.");
+      }
+    };
+
+    const showPosition = (position) => {
+      const { latitude, longitude } = position.coords;
+      setLatitude(latitude);
+      setLongitude(longitude);
+    };
+
+    getLocation();
+  }, []); // Empty dependency array to run the effect only once
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     // Check if any of the fields are empty
-    if (!username || !email || !password || !nationality || !area || !district || !gid) {
+    if (!username || !email || !password || !nationality || !area || !district || !latitude || !longitude) {
       console.log("Please fill in all fields");
       return;
     }
 
-    axios.post('http://localhost:8081/property', { username, email, password, nationality, area, district, gid })
+    axios.post('http://localhost:8081/property', { username, email, password, nationality, area, district, latitude, longitude })
       .then(res => {
         navigate('/adminNavigation/AdminUserpage');
       })
@@ -33,7 +53,7 @@ const Createuser = () => {
     <div className="d-flex vh-50 justify-content-center align-items-center">
       <div className="w-50 bg-white rounded p-3">
         <form onSubmit={handleSubmit}>
-          <h2>property Registry</h2>
+          <h2>Property Registry</h2>
           <div className="mb-2">
             <label htmlFor="">Username</label>
             <input
@@ -95,13 +115,23 @@ const Createuser = () => {
             />
           </div>
           <div className="mb-2">
-            <label htmlFor="">Gid</label>
+            <label htmlFor="">Latitude</label>
             <input
               type="text"
-              placeholder="Enter Gid"
+              placeholder="Enter latitude"
               className="form-control"
-              value={gid}
-              onChange={e => setGid(e.target.value)}
+              value={latitude}
+              onChange={e => setLatitude(e.target.value)}
+            />
+          </div>
+          <div className="mb-2">
+            <label htmlFor="">Longitude</label>
+            <input
+              type="text"
+              placeholder="Enter longitude"
+              className="form-control"
+              value={longitude}
+              onChange={e => setLongitude(e.target.value)}
             />
           </div>
 

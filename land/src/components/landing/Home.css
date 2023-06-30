@@ -1,19 +1,47 @@
-.bg{
-    background-image: url("../images/intro.jpg");
-    background-size: cover; 
-    background-repeat: no-repeat;
-    color: #ffffff;
-    background-position: center;
-    min-height: 70vh;
-    padding-top: 4rem;
-    text-align: center
-   
+.bg {
+  background-size: 85% auto;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: #ffffff;
+  min-height: 70vh;
+  padding-top: 4rem;
+  text-align: center;
+  position: relative;
+  margin-top: 30px;
+  margin-bottom: 40px;
 }
-.
 
-.h1{
-    font-size: 50px;
+.welcome-text {
+  text-align: center;
+  font-size: 25px;
+  font-weight: 500;
+  color: black;
 }
-.hhome{
-    background-position: center; 
+
+.h1 {
+  font-size: 50px;
+}
+
+.hhome {
+  background-position: center;
+}
+
+.scrolling-text {
+  width: max-content;
+  white-space: nowrap;
+  animation: scrollLeft 10s linear infinite;
+}
+
+.scrolling-title {
+  display: inline-block;
+  padding-right: 100%; /* Ensure the entire text is visible while scrolling */
+}
+
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }

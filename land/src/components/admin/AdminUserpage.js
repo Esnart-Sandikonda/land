@@ -34,7 +34,8 @@ const AdminUserpage = () => {
                 <th>Nationality</th>
                 <th>Area</th>
                 <th>District</th>
-                <th>Gid</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -47,7 +48,8 @@ const AdminUserpage = () => {
                   <td>{d.nationality}</td>
                   <td>{d.area}</td>
                   <td>{d.district}</td>
-                  <td>{d.gid}</td>
+                  <td>{d.latitude}</td>
+                  <td>{d.longitude}</td>
                   <td>
                     <Link to={`/AdminNavigation/Updateuser/${d.user_id}`} className="btn btn-sm btn-primary">Update</Link>
                     <button onClick={() => handleDelete(d.user_id)} className="btn btn-sm btn-danger" >Delete</button>

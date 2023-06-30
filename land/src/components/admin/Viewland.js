@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { MapContainer, TileLayer, Polygon } from 'react-leaflet';
-import wellknown from 'wellknown';
+import { MapContainer, TileLayer, GeoJSON } from 'react-leaflet';
 
 const Viewland = () => {
   const [shapefileData, setShapefileData] = useState([]);
@@ -11,26 +10,17 @@ const Viewland = () => {
       .get('http://localhost:8081/shapefile')
       .then((response) => {
         console.log(response.data); // Log the response data
-        const shapefileFeatures = response.data.map((row) => {
-          const geometry = wellknown.parse(row.wkt);
-          return {
-            gid: row.gid,
-            geometry,
-          };
-        });
-        setShapefileData(shapefileFeatures);
+        setShapefileData(response.data);
       })
       .catch((error) => console.error(error));
   }, []);
 
   return (
     <div>
-      <h3>Land owned by zomba city</h3>
-      <MapContainer center={[0, 0]} zoom={10} style={{ height: '400px', width: '100%' }}>
+      <h3>Land owned by Zomba City</h3>
+      <MapContainer center={[-15.3833, 35.3333]} zoom={12} style={{ height: '400px', width: '100%' }}>
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-        {shapefileData.map((feature) => (
-          <Polygon key={feature.gid} positions={feature.geometry.coordinates} />
-        ))}
+        <GeoJSON data={shapefileData} />
       </MapContainer>
       <table>
         <thead>

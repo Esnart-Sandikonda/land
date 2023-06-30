@@ -1,111 +1,179 @@
- 
-*{
-	margin:0;
-	padding:0;
-	box-sizing: border-box;
-}
-.container{
-	max-width: 1170px;
-	margin:auto;
-}
-.footer h4 {
-	color:black;
-	font-size: 18px;
-	font-weight: 600;
+/* Footer.css */
+.footer {
+	background-color: #5262c4;
+	color: #ffffff;
+	padding: 20px 0;
+	text-align: center;
+	margin-left: 5%;
+	margin-right: 5%;
+  }
+  
+  .footer-content {
+	display: flex;
+	justify-content: baseline;
+	align-items: first baseline;
+	flex-wrap: wrap;
+  }
+  
+  .footer-section {
+	margin: 20px;
+	flex: 1 1 auto;
+	min-width: 200px;
+  }
+  
+  .footer h4 {
+	font-size: 22px;
+	margin-bottom: 10px;
+  }
+  
+  .footer p {
+	font-size: 14px;
+	margin: 0;
+  }
+  
+  .footer-social {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	justify-content: center;
+  }
+  
+  .footer-social li {
+	margin-right: 10px;
+  }
+  
+  .footer-social a {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	background-color: #ffffff;
+	color: #5262c4;
+	border-radius: 50%;
+	font-size: 16px;
+	transition: background-color 0.3s ease;
+  }
+  
+  .footer-social a:hover {
+	background-color: #5262c4;
+	color: #ffffff;
+  }
+  
+  /* Modal Styles */
+  .email-modal {
+	overlay: {
+	  background-color: rgba(0, 0, 0, 0.5);
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+	}
+	content: {
+	  border: none;
+	  background-color: #f9f9f9;
+	  padding: 20px;
+	  max-width: 400px;
+	  margin: 0 auto;
+	  border-radius: 4px;
+	  position: relative;
+	}
+  }
+  
+  .modal-header {
+	display: flex;
+	justify-content: flex-end;
+  }
+  
+  .close-button {
+	background: none;
+	border: none;
+	color: #0a0000;
+	font-size: 24px;
+	cursor: pointer;
+  }
+  
+  .modal-content {
+	margin-top: 20px;
+  }
+  
+  .modal-content h2 {
+	color: #333;
+	font-size: 20px;
 	margin-bottom: 20px;
   }
   
-.footer p {
-	color: white;
+  .form-group {
+	margin-bottom: 20px;
+  }
+  
+  label {
+	color: #0c0000;
 	font-size: 14px;
-	line-height: 24px;
-  }
-  .footer-columns {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-  }
-.row{
-	display: flex;
-	flex-wrap: wrap;
-}
-ul{
-	list-style: none;
-}
-.footer{
-	background: #5265c4;
-    padding: 10px 0;
-}
-.footer-col{
-   width: 25%;
-   padding: 0 15px;
-}
-.footer-col h4{
-	font-size: 18px;
-	color: #ffffff;
-	text-transform: capitalize;
-	margin-bottom: 35px;
-	font-weight: 500;
-	position: relative;
-}
-.footer-col h4::before{
-	content: '';
-	position: absolute;
-	left:0;
-	bottom: -10px;
-	height: 2px;
-	box-sizing: border-box;
-	width: 50px;
-}
-.footer-col ul li:not(:last-child){
-	margin-bottom: 10px;
-}
-.footer-col ul li a{
-	font-size: 16px;
-	text-transform: capitalize;
-	color: #ffffff;
-	text-decoration: none;
-	font-weight: 300;
-	color: #bbbbbb;
 	display: block;
-	transition: all 0.3s ease;
-}
-.footer-col ul li a:hover{
-	color: #ffffff;
-	padding-left: 8px;
-}
-.footer-col .social-links a{
-	display: inline-block;
-	height: 40px;
-	width: 40px;
-	background-color: rgba(255,255,255,0.2);
-	margin:0 10px 10px 0;
-	text-align: center;
-	line-height: 40px;
-	border-radius: 50%;
-	color: #ffffff;
-	transition: all 0.5s ease;
-}
-.footer-col .social-links a:hover{
+	margin-bottom: 5px;
+  }
+  
+  input[type="text"],
+  textarea {
+	width: 100%;
+	padding: 8px;
+	border: 1px solid #020000;
+	border-radius: 10px;
+	resize: vertical;
+  }
+  
+  .submit-button {
+	background-color: #5262c4;
 	color: white;
-	background-color: #ffffff;
-}
-
-/*responsive*/
-@media(max-width: 767px){
-  .footer-col{
-    width: 50%;
-    margin-bottom: 30px;
-}
-}
-@media(max-width: 574px){
-  .footer-col{
-    width: 100%;
-}
-}
-
-
-
-
-
-
+	border: none;
+	padding: 10px 20px;
+	border-radius: 4px;
+	cursor: pointer;
+  }
+  
+  .submit-button:hover {
+	background-color: #4051b5;
+  }
+  
+  /* Additional Styling */
+  .email-modal .overlay {
+	background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .email-modal .content {
+	width: 30%;
+  }
+  
+  .email-modal .close-button {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+  }
+  
+  .email-modal .form-group {
+	margin-bottom: 10px;
+	background-color: B ;
+  }
+  
+  .email-modal label {
+	font-size: 20px;
+	color: #324b65;
+  }
+  
+  .email-modal input[type="text"],
+  .email-modal textarea {
+	padding: 10px;
+  }
+  
+  .email-modal .submit-button {
+	width: 10%;
+	padding: 12px;
+	margin-left: 45%;
+	margin-right: 10%;
+  }
+  
+  .email-modal .submit-button:hover {
+	background-color: #4051b5;
+  }
+  

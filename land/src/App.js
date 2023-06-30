@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import Home from './components/landing/Home'
 import OwnerPortal from "./components/landing/OwnerPortal";
 import StaffPortal from "./components/landing/StaffPortal"
@@ -19,6 +20,9 @@ import AdminProfileview from "./components/admin/AdminProfileview";
 import Viewland from "./components/admin/Viewland";
 import UserHome from "./components/user/UserHome";
 import LeaseApplications from "./components/admin/LeaseApplications";
+import Userviewland from "./components/user/Userviewland";
+import LandAssessmentPage from "./components/landing/LandAssessmentPage"
+import Sketcher from "./components/landing/Sketcher"
 
 
  function App() {
@@ -33,18 +37,19 @@ import LeaseApplications from "./components/admin/LeaseApplications";
           <Route path="/StaffPortal" element={<StaffPortal />} />
           <Route path="/Services" element={<Services />} />
           <Route path="/About" element={<About />} />
+          <Route path="/land-assessment" element={<LandAssessmentPage/>} />
+          <Route path="/sketch-map-planning" element={<Sketcher />} />
 
           <Route path='/AdminNavigation' element={<AdminNavigation />} >
               <Route path="/AdminNavigation" element={<AdminDashboard />} />
               <Route path='AdminUserpage' element={<AdminUserpage /> } /> 
               <Route path="Createuser" element={<Createuser />} />
               <Route path="Updateuser/:user_id" element={<Updateuser />} />
-              <Route path="AdminProfileview/:id" element={<AdminProfileview />} />
+              <Route path="AdminProfileview" element={<AdminProfileview />} />
               <Route path="Viewland" element={<Viewland />} />
               <Route path="AdminViewUserLand/:user_id" element={<AdminViewUserLand />} />
-              <Route path="AdminProfileView" element={<AdminProfileview/>} />
               <Route path="LeaseApplications" element={<LeaseApplications/>} />
-
+               
           </Route>
 
           <Route path="/AdminSignup" element={<AdminSignup />} />
@@ -54,8 +59,9 @@ import LeaseApplications from "./components/admin/LeaseApplications";
           <Route path="Clearance" element={<Clearance />} />
           <Route path="ApplyForLease" element={<ApplyForLease />} />
           <Route path="Profile" element={<Profile />} />
-          </Route>
+          <Route path="Userviewland" element={<Userviewland/>} />
           
+          </Route>
         </Routes>
         
         

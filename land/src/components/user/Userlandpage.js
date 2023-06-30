@@ -42,7 +42,7 @@ const Userlandpage =() =>{
                                     <span className="ms-1 d-none d-sm-inline">Clearance</span></Link>
 							</li>
 							<li>
-								<Link to="/Userlandpage/ViewUserLand" className="nav-link px-0 align-middle text-white">
+								<Link to="/Userlandpage/Userviewland" className="nav-link px-0 align-middle text-white">
 									<i className="fs-4  bi-geo-fill"></i> 
                                     <span className="ms-1 d-none d-sm-inline">view land</span></Link>
 							</li>

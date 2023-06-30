@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import AdminValidation from "./AdminLoginValidation";
 import axios from "axios";
 
-const StaffPortal = () => {
+const OwnerPortal = () => {
   const [values, setValues] = useState({
     email: "",
     password: "",
@@ -76,4 +76,4 @@ const StaffPortal = () => {
   );
 };
 
-export default StaffPortal;
+export default OwnerPortal;
