@@ -235,6 +235,7 @@ app.get('/gettingleaseform', (req, res) => {
   });
 });
 
+// count registered users
 app.get('/userCount', (req, res) => {
   knex('property_registry')
     .count('user_id as count')
